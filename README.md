@@ -1,1 +1,1 @@
-![Advent of Code](advent.svg)
+<img alt="Advent of Code" src="./advent.svg" width="100%">
