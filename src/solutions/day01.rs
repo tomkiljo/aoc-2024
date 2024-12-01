@@ -1,15 +1,9 @@
-use crate::util::input::{read_buf_ints, read_file};
+use crate::util::input::read_buf_ints;
+use crate::util::Part;
 
-pub fn run(part: &str) {
-    let input = read_file("input/day01.txt");
-    match part {
-        "1" => part1(input),
-        "2" => part2(input),
-        _ => panic!("Invalid part {}", part),
-    };
-}
+crate::create_solver!(part_one, part_two);
 
-fn part1(input: Vec<u8>) -> i64 {
+fn part_one(input: Vec<u8>) -> i64 {
     let nums = read_buf_ints(&input);
 
     let (mut left, mut right) = nums
@@ -26,11 +20,10 @@ fn part1(input: Vec<u8>) -> i64 {
         .map(|(l, r)| (l - r).abs())
         .sum::<i64>();
 
-    println!("Day 1, Part 1: {}", result);
     result
 }
 
-fn part2(input: Vec<u8>) -> i64 {
+fn part_two(input: Vec<u8>) -> i64 {
     let nums = read_buf_ints(&input);
 
     let (left, right) = nums
@@ -43,7 +36,6 @@ fn part2(input: Vec<u8>) -> i64 {
         .map(|l| right.iter().filter(|&r| l == r).count() as i64 * l)
         .sum::<i64>();
 
-    println!("Day 1, Part 2: {}", result);
     result
 }
 
@@ -59,14 +51,14 @@ mod tests {
 3   3"#;
 
     #[test]
-    fn test_part1() {
+    fn test_part_one() {
         let input = INPUT.as_bytes().to_vec();
-        assert_eq!(part1(input), 11);
+        assert_eq!(part_one(input), 11);
     }
 
     #[test]
-    fn test_part2() {
+    fn test_part_two() {
         let input = INPUT.as_bytes().to_vec();
-        assert_eq!(part2(input), 31);
+        assert_eq!(part_two(input), 31);
     }
 }

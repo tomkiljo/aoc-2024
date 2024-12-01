@@ -3,11 +3,14 @@ use std::{
     io::{BufRead, Read},
 };
 
-pub fn read_file(path: &str) -> Vec<u8> {
-    let mut file = File::open(path).expect("File not found");
+use anyhow::Context;
+
+pub fn read_file(path: &str) -> anyhow::Result<Vec<u8>> {
+    let mut file = File::open(path).with_context(|| format!("File {path} not found"))?;
     let mut buffer = Vec::new();
-    file.read_to_end(&mut buffer).expect("Failed to read file");
-    buffer
+    file.read_to_end(&mut buffer)
+        .with_context(|| "Failde to read file")?;
+    Ok(buffer)
 }
 
 #[allow(dead_code)]
