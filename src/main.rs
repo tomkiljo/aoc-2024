@@ -18,7 +18,7 @@ fn main() -> anyhow::Result<()> {
 
     let result = match day {
         1 => solutions::day01::solve(input, part.clone())?,
-        // 2 => solutions::day02::solve(input, part),
+        2 => solutions::day02::solve(input, part.clone())?,
         // 3 => solutions::day03::solve(input, part),
         // 4 => solutions::day04::solve(input, part),
         // 5 => solutions::day05::solve(input, part),
