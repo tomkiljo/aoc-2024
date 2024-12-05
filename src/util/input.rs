@@ -13,7 +13,6 @@ pub fn read_file(path: &str) -> anyhow::Result<Vec<u8>> {
     Ok(buffer)
 }
 
-#[allow(dead_code)]
 pub fn read_lines(buffer: &Vec<u8>) -> Vec<String> {
     let reader = std::io::BufReader::new(buffer.as_slice());
     reader.lines().map(|l| l.unwrap()).collect()
@@ -27,7 +26,6 @@ pub fn read_buf_ints(buffer: &Vec<u8>) -> Vec<i64> {
         .collect()
 }
 
-#[allow(dead_code)]
 pub fn read_str_ints(line: &str) -> Vec<i64> {
     line.split(|c: char| !c.is_numeric())
         .filter(|s| !s.is_empty())
