@@ -32,3 +32,11 @@ pub fn read_str_ints(line: &str) -> Vec<i64> {
         .map(|s| s.parse().unwrap())
         .collect()
 }
+
+pub fn read_matrix(buffer: &Vec<u8>) -> Vec<Vec<u8>> {
+    buffer
+        .split(|&c| c == b'\n')
+        .filter(|s| !s.is_empty())
+        .map(|s| s.to_vec())
+        .collect()
+}

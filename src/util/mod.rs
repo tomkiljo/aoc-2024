@@ -1,4 +1,5 @@
 pub mod input;
+pub mod matrix;
 
 use std::{
     fmt::{self, Display, Formatter},
